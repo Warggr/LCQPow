@@ -447,8 +447,6 @@ endif()
 
 ## Build Python interface ---------------------------------------------------------------
 if (${BUILD_PYTHON_INTERFACE})
-    
-    add_subdirectory(external/pybind11)
     add_subdirectory(interfaces/python/lcqpow)
 
     set(

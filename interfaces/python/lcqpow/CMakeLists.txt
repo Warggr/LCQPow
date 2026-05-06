@@ -1,4 +1,8 @@
 find_package(Eigen3 REQUIRED)
+find_package(pybind11 CONFIG)
+
+get_target_property(_includes pybind11::module INTERFACE_INCLUDE_DIRECTORIES)
+message("Pybind11 includes: ${_includes}")
 
 macro(pybind11_add_lcqpow_module MODULE)
   pybind11_add_module(
@@ -9,7 +13,6 @@ macro(pybind11_add_lcqpow_module MODULE)
   target_include_directories(
     ${MODULE} 
     PRIVATE
-    ${EIGEN3_INCLUDE_DIR}
     ${osqp_include}
   )
   target_link_libraries(
@@ -17,6 +20,7 @@ macro(pybind11_add_lcqpow_module MODULE)
     PRIVATE
     PUBLIC ${PROJECT_NAME}-shared
     PRIVATE ${qpoases_lib} ${osqp_lib}
+    PRIVATE Eigen3::Eigen
   )
 endmacro()
 
