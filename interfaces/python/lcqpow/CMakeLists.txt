@@ -2,7 +2,6 @@ find_package(Eigen3 REQUIRED)
 find_package(pybind11 CONFIG)
 
 get_target_property(_includes pybind11::module INTERFACE_INCLUDE_DIRECTORIES)
-message("Pybind11 includes: ${_includes}")
 
 macro(pybind11_add_lcqpow_module MODULE)
   pybind11_add_module(
